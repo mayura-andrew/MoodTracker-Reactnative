@@ -1,14 +1,16 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react';
-import {Text, View} from 'react-native';
+import { ScrollView } from 'react-native';
+import { useAppContext } from '../App.provider';
+import { MoodItemRow } from '../components/MoodItemRow';
 
-export const History = () =>{
-    return (
-        <View>
-            <Text>Home</Text>
-        </View>
-    );
+export const History: React.FC = () => {
+  const appContext = useAppContext();
+
+  return (
+    <ScrollView>
+      {appContext.moodList.map(item => (
+        <MoodItemRow item={item} key={item.timestamp} />
+      ))}
+    </ScrollView>
+  );
 };
-
-
-

@@ -1,13 +1,21 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react';
-import {Text, View} from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { useAppContext } from '../App.provider';
+import { MoodPicker } from '../components/MoodPicker';
 
-export const Home = () =>{
-    return (
-        <View>
-            <Text>Home</Text>
-        </View>
-    );
+export const Home: React.FC = () => {
+  const appContext = useAppContext();
+
+  return (
+    <View style={styles.container}>
+      <MoodPicker onSelect={appContext.handleSelectMood} />
+    </View>
+  );
 };
 
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+});
